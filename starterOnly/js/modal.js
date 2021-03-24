@@ -9,9 +9,7 @@ const quantity = document.querySelector("#quantity");
 const birthDate = document.querySelector("#birthdate");
 const checkboxes = document.querySelectorAll("[tabindex]");
 const requiredCheckbox = document.querySelector("#checkbox1");
-const radios = Array.from(
-  document.querySelectorAll("#location .checkbox-input")
-);
+const radios = Array.from(document.querySelectorAll("#location .checkbox-input"));
 const submitBtn = document.querySelector(".btn-submit");
 
 // --- EVENT LISTENER ---
@@ -21,9 +19,7 @@ names.forEach((input) => input.addEventListener("keyup", checkName));
 email.addEventListener("keyup", checkEmail);
 quantity.addEventListener("keyup", checkQuantity);
 birthDate.addEventListener("keyup", checkBirthDate);
-checkboxes.forEach((checkbox) =>
-  checkbox.addEventListener("keyup", toggleCheck)
-);
+checkboxes.forEach((checkbox) => checkbox.addEventListener("keyup", toggleCheck));
 requiredCheckbox.addEventListener("click", checkRequired);
 radios.forEach((radio) => radio.addEventListener("click", checkRadio));
 submitBtn.addEventListener("click", handleSubmit);

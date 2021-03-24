@@ -535,3 +535,33 @@ footer {
     opacity: 1;
   }
 }
+
+/* success page after submit */
+.successpage {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: #232323;
+}
+
+.successpage .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successpage .modal-body h1 {
+  text-align: center;
+}
+
+.successpage .button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  padding: 12px 82px;
+  border: none;
+  border-radius: 10px;
+}
