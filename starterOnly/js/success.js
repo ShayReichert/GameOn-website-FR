@@ -10,8 +10,8 @@ function closeSuccessModal() {
 }
 
 // Automatic redirection after 5 seconds
-window.onload = function () {
-  setTimeout(function () {
-    closeSuccessModal();
-  }, 5000);
-};
+// window.onload = function () {
+//   setTimeout(function () {
+//     closeSuccessModal();
+//   }, 5000);
+// };

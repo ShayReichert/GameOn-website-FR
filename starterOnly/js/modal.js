@@ -42,18 +42,6 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-function checkName() {
-  const formData = this.parentNode;
-  const inputLenght = this.value.length;
-  const minLength = this.getAttribute("minlength");
-
-  if (inputLenght >= minLength) {
-    formData.setAttribute("data-error-visible", "false");
-  } else if (inputLenght < minLength) {
-    formData.setAttribute("data-error-visible", "true");
-  }
-}
-
 function checkWithRegex(element, regex) {
   const formData = element.parentNode;
   const input = element.value;
@@ -64,6 +52,11 @@ function checkWithRegex(element, regex) {
   } else {
     formData.setAttribute("data-error-visible", "true");
   }
+}
+
+function checkName() {
+  const regex = /\w\w+/;
+  checkWithRegex(this, regex);
 }
 
 function checkEmail() {
