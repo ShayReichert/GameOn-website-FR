@@ -85,6 +85,9 @@ img {
     right: 0;
     top: 0;
   }
+  .topnav.responsive .main-navbar {
+    padding-top: 3.3rem;
+  }
   .topnav.responsive a {
     float: none;
     display: block;
@@ -108,8 +111,8 @@ img {
   .topnav {
     margin: 7% 5%;
   }
-  .header-logo img {
-    width: 50%;
+  .topnav.responsive .main-navbar {
+    padding-top: 2rem;
   }
   .topnav a {
     display: none;
@@ -118,6 +121,9 @@ img {
     float: right;
     display: block;
     margin-top: -15px;
+  }
+  .header-logo img {
+    width: 50%;
   }
 }
 
@@ -558,10 +564,23 @@ footer {
 }
 
 /* success page after submit */
+.body-success {
+  max-width: auto;
+  background: #232323;
+}
+
+.wrapper-successpage {
+  height: 100%;
+  width: 100%;
+  max-width: 1300px;
+  background: #232323;
+}
 .successpage {
+  position: relative;
   display: flex;
   align-items: center;
   height: 100vh;
+  max-height: 800px;
   width: 100%;
   background: #232323;
 }
