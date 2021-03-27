@@ -42,6 +42,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// Errors check
 function checkWithRegex(element, regex) {
   const formData = element.parentNode;
   const input = element.value;
@@ -74,17 +75,6 @@ function checkBirthDate() {
   checkWithRegex(this, regex);
 }
 
-// accessibility improvment
-function toggleCheck(e) {
-  const input = this.parentNode.attributes[1].nodeValue;
-  const element = document.querySelector(`#${input}`);
-
-  // on "Enter" key pressed
-  if (e.keyCode === 13) {
-    element.click();
-  }
-}
-
 function checkRequired() {
   const formData = this.parentNode;
 
@@ -108,13 +98,66 @@ function checkRadio() {
   return isRadioChecked;
 }
 
-function handleSubmit() {
+// accessibility improvment
+function toggleCheck(e) {
+  const input = this.parentNode.attributes[1].nodeValue;
+  const element = document.querySelector(`#${input}`);
+
+  // on "Enter" key pressed
+  if (e.keyCode === 13) {
+    element.click();
+  }
+}
+
+function handleSubmit(e) {
   const errors = document.querySelectorAll("[data-error-visible]");
   const isRadioChecked = checkRadio();
+  const mainContent = document.querySelector("main");
 
   if (!errors || isRadioChecked) {
-    return true;
+    setTimeout(function () {
+      mainContent.innerHTML = `
+ <div class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-headline">
+            Marathon national<br />
+            de jeux vidéos
+          </h1>
+          <p class="hero-text">
+            Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places
+            limitées !
+          </p>
+          <button class="btn-signup modal-btn">je m'inscris</button>
+        </div>
+        <div class="hero-img">
+          <img src="img/bg_img.jpg" alt="img" />
+        </div>
+        <button class="btn-signup modal-btn">je m'inscris</button>
+      </div>
+
+      <div class="bground">
+        <div class="content">
+          <span class="close"></span>
+          <div class="modal-body">
+            <div class="content">
+              <div class="success-body">
+                <h1>Merci d'avoir soumis votre inscription !</h1>
+              </div>
+            </div>
+            <button class="btn-close button">Fermer</button>
+          </div>
+        </div>
+      </div>
+  `;
+    }, 1000);
+
+    handleSuccess();
   } else {
     return false;
   }
+}
+
+function handleSuccess() {
+  const buttonClose = document.querySelector(".btn-close");
+  buttonClose.addEventListener("click", () => (modalbg.style.display = "none"));
 }

@@ -238,6 +238,12 @@ input {
   height: 48px;
 }
 
+@media screen and (max-width: 540px) {
+  .content {
+    margin: 18% auto;
+  }
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -564,7 +570,7 @@ footer {
 }
 
 /* success page after submit */
-.body-success {
+/* .body-success {
   max-width: auto;
   background: #232323;
 }
@@ -583,19 +589,31 @@ footer {
   max-height: 800px;
   width: 100%;
   background: #232323;
-}
+} */
 
-.successpage .modal-body {
+.modal-body .success-body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.successpage .modal-body h1 {
+.modal-body .success-body h1 {
   text-align: center;
 }
 
-.successpage .button {
+.modal-body .btn-close {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+/* .successpage .button {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -604,4 +622,4 @@ footer {
   padding: 12px 82px;
   border: none;
   border-radius: 10px;
-}
+} */
