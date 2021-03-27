@@ -42,6 +42,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// handle errors
 function checkWithRegex(element, regex) {
   const formData = element.parentNode;
   const input = element.value;
@@ -74,17 +75,6 @@ function checkBirthDate() {
   checkWithRegex(this, regex);
 }
 
-// accessibility improvment
-function toggleCheck(e) {
-  const input = this.parentNode.attributes[1].nodeValue;
-  const element = document.querySelector(`#${input}`);
-
-  // on "Enter" key pressed
-  if (e.keyCode === 13) {
-    element.click();
-  }
-}
-
 function checkRequired() {
   const formData = this.parentNode;
 
@@ -108,6 +98,18 @@ function checkRadio() {
   return isRadioChecked;
 }
 
+// accessibility improvment
+function toggleCheck(e) {
+  const input = this.parentNode.attributes[1].nodeValue;
+  const element = document.querySelector(`#${input}`);
+
+  // on "Enter" key pressed
+  if (e.keyCode === 13) {
+    element.click();
+  }
+}
+
+// submit
 function handleSubmit() {
   const errors = document.querySelectorAll("[data-error-visible]");
   const isRadioChecked = checkRadio();
