@@ -112,44 +112,19 @@ function toggleCheck(e) {
 function handleSubmit(e) {
   const errors = document.querySelectorAll("[data-error-visible]");
   const isRadioChecked = checkRadio();
-  const mainContent = document.querySelector("main");
+  const mainContent = document.querySelector(".modal-body");
+
+  e.preventDefault();
 
   if (!errors || isRadioChecked) {
-    setTimeout(function () {
-      mainContent.innerHTML = `
- <div class="hero-section">
-        <div class="hero-content">
-          <h1 class="hero-headline">
-            Marathon national<br />
-            de jeux vidéos
-          </h1>
-          <p class="hero-text">
-            Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places
-            limitées !
-          </p>
-          <button class="btn-signup modal-btn">je m'inscris</button>
-        </div>
-        <div class="hero-img">
-          <img src="img/bg_img.jpg" alt="img" />
-        </div>
-        <button class="btn-signup modal-btn">je m'inscris</button>
-      </div>
-
-      <div class="bground">
+    mainContent.innerHTML = `
         <div class="content">
-          <span class="close"></span>
-          <div class="modal-body">
-            <div class="content">
-              <div class="success-body">
-                <h1>Merci d'avoir soumis votre inscription !</h1>
-              </div>
-            </div>
-            <button class="btn-close button">Fermer</button>
+          <div class="success-body">
+            <h1>Merci d'avoir soumis votre inscription !</h1>
           </div>
         </div>
-      </div>
+        <button class="btn-close button">Fermer</button>
   `;
-    }, 1000);
 
     handleSuccess();
   } else {
