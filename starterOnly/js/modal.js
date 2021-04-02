@@ -43,7 +43,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// Errors checker
+// errors checker
 function checkWithRegex(element, regex) {
   const formData = element.parentNode;
   const input = element.value;
@@ -91,8 +91,6 @@ function checkBirthDate() {
     formData.setAttribute("data-validate", "no");
   }
 }
-
-function checkTurnamentsNumber() {}
 
 function checkRequired() {
   const formData = this.parentNode;
