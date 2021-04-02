@@ -53,6 +53,7 @@
             <form name="reserve" action="" method="get" onsubmit="return handleSubmit(e);">
               <div
                 data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom"
+                data-validate="no"
                 class="formData"
               >
                 <label for="first">Prénom</label><br />
@@ -67,6 +68,7 @@
               </div>
               <div
                 data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom"
+                data-validate="no"
                 class="formData"
               >
                 <label for="last">Nom</label><br />
@@ -79,7 +81,11 @@
                   required
                 /><br />
               </div>
-              <div data-error="Vous devez entrer une adresse mail valide" class="formData">
+              <div
+                data-error="Vous devez entrer une adresse mail valide"
+                data-validate="no"
+                class="formData"
+              >
                 <label for="email">E-mail</label><br />
                 <input class="text-control" type="email" id="email" name="email" required /><br />
               </div>
@@ -93,7 +99,11 @@
                   required
                 /><br />
               </div>
-              <div data-error="Veuillez entrer une valeur comprise entre 0 et 99" class="formData">
+              <div
+                data-error="Veuillez entrer une valeur comprise entre 0 et 99"
+                data-validate="no"
+                class="formData"
+              >
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label
                 ><br />
                 <input
@@ -107,7 +117,12 @@
                 />
               </div>
               <p class="text-label">Quelles villes ?</p>
-              <div id="location" data-error="Vous devez choisir une option" class="formData">
+              <div
+                id="location"
+                data-error="Vous devez choisir une option"
+                data-validate="no"
+                class="formData"
+              >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -178,6 +193,7 @@
 
               <div
                 data-error="Vous devez vérifier que vous acceptez les termes et conditions"
+                data-validate="yes"
                 class="formData"
               >
                 <input

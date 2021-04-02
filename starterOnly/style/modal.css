@@ -8,8 +8,8 @@
   margin: 0;
   padding: 0;
 }
-/* Landing Page */
 
+/* Landing Page */
 body {
   margin: 0;
   display: flex;
@@ -569,28 +569,6 @@ footer {
   }
 }
 
-/* success page after submit */
-/* .body-success {
-  max-width: auto;
-  background: #232323;
-}
-
-.wrapper-successpage {
-  height: 100%;
-  width: 100%;
-  max-width: 1300px;
-  background: #232323;
-}
-.successpage {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  max-height: 800px;
-  width: 100%;
-  background: #232323;
-} */
-
 .modal-body .success-body {
   display: flex;
   flex-direction: column;
@@ -613,13 +591,8 @@ footer {
   border: 0;
 }
 
-/* .successpage .button {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translate(-50%);
-  text-align: center;
-  padding: 12px 82px;
-  border: none;
-  border-radius: 10px;
-} */
+/* Modal message submit sccess */
+.success-body {
+  height: 32rem;
+  justify-content: center;
+}
