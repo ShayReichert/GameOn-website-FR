@@ -20,11 +20,13 @@ email.addEventListener("keyup", checkEmail);
 quantity.addEventListener("keyup", checkQuantity);
 birthDate.addEventListener("keyup", checkBirthDate);
 checkboxes.forEach((checkbox) => checkbox.addEventListener("keyup", toggleCheck));
-requiredCheckbox.addEventListener("click", checkRequired);
+requiredCheckbox.addEventListener("click", checkTermsOfUse);
 radios.forEach((radio) => radio.addEventListener("click", checkRadio));
 submitBtn.addEventListener("click", handleSubmit);
 
 // --- FUNCTIONS ---
+
+// Navbar on desktop or smartphone
 function editNav() {
   const nav = document.getElementById("myTopnav");
   if (nav.className === "topnav") {
@@ -34,30 +36,15 @@ function editNav() {
   }
 }
 
-// modal form
+// Modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
-
 function closeModal() {
   modalbg.style.display = "none";
 }
 
-// errors checker
-function checkWithRegex(element, regex) {
-  const formData = element.parentNode;
-  const input = element.value;
-  const isValid = regex.test(input);
-
-  if (isValid) {
-    formData.setAttribute("data-error-visible", "false");
-    formData.setAttribute("data-validate", "yes");
-  } else {
-    formData.setAttribute("data-error-visible", "true");
-    formData.setAttribute("data-validate", "no");
-  }
-}
-
+// All checkers
 function checkName() {
   const regex = /\w\w+/;
   checkWithRegex(this, regex);
@@ -83,43 +70,45 @@ function checkBirthDate() {
   const inputYear = new Date(this.value).getFullYear();
   const isValidYear = inputYear < currentYear;
 
-  if (isValidYear) {
-    formData.setAttribute("data-error-visible", "false");
-    formData.setAttribute("data-validate", "yes");
-  } else {
-    formData.setAttribute("data-error-visible", "true");
-    formData.setAttribute("data-validate", "no");
-  }
+  setAttributes(isValidYear, formData);
 }
 
-function checkRequired() {
+function checkTermsOfUse() {
   const formData = this.parentNode;
 
-  if (this.checked) {
-    formData.setAttribute("data-error-visible", "false");
-    formData.setAttribute("data-validate", "yes");
-  } else {
-    formData.setAttribute("data-error-visible", "true");
-    formData.setAttribute("data-validate", "no");
-  }
+  setAttributes(this.checked, formData);
 }
 
 function checkRadio() {
   const isRadioChecked = radios.some((radio) => radio.checked);
   const radioContainer = document.querySelector("#location");
 
-  if (isRadioChecked) {
-    radioContainer.setAttribute("data-error-visible", "false");
-    radioContainer.setAttribute("data-validate", "yes");
-  } else {
-    radioContainer.setAttribute("data-error-visible", "true");
-    radioContainer.setAttribute("data-validate", "no");
-  }
+  setAttributes(isRadioChecked, radioContainer);
 
   return isRadioChecked;
 }
 
-// accessibility improvment
+// General function : errors checker
+function checkWithRegex(element, regex) {
+  const formData = element.parentNode;
+  const input = element.value;
+  const isValid = regex.test(input);
+
+  setAttributes(isValid, formData);
+}
+
+// General function : add the correct attributes depending on whether the input is valid or not
+function setAttributes(isValid, element) {
+  if (isValid) {
+    element.setAttribute("data-error-visible", "false");
+    element.setAttribute("data-validate", "yes");
+  } else {
+    element.setAttribute("data-error-visible", "true");
+    element.setAttribute("data-validate", "no");
+  }
+}
+
+// Accessibility improvment for checkboxes
 function toggleCheck(e) {
   const input = this.parentNode.attributes[1].nodeValue;
   const element = document.querySelector(`#${input}`);
@@ -130,6 +119,7 @@ function toggleCheck(e) {
   }
 }
 
+// On form submit
 function handleSubmit(e) {
   const invalides = document.querySelectorAll("[data-validate='no']").length;
   const isRadioChecked = checkRadio();
@@ -138,7 +128,7 @@ function handleSubmit(e) {
 
   e.preventDefault();
 
-  //check if a input is empty
+  // check if a input is empty
   inputs.forEach((input) => {
     input.value ? "" : input.parentNode.setAttribute("data-error-visible", "true");
   });
@@ -159,6 +149,7 @@ function handleSubmit(e) {
   }
 }
 
+// Handle close button on success modal
 function handleSuccess() {
   const buttonClose = document.querySelector(".btn-close");
   buttonClose.addEventListener("click", () => (modalbg.style.display = "none"));
